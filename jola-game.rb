@@ -47,23 +47,81 @@ end
 
 def front_room_function(front_room_selection)
     if front_room_selection.include? "staircase" or front_room_selection.include? "basement"
-        staircase_destiny
+        enter_cellar
     elsif front_room_selection.include? "hallway"
         hallway_destiny
     elsif front_room_selection.include? "closet"
         p "YOU DIED. There was a scary skeleton and you got startled and tripped down the stairs and died. Should've picked the basement if you were gonna end up there anyway..."
     else 
         p "You are a coward. This game is too scary for you"
-    end
-        
-end
-
-def staircase_destiny
-    "You're on the staircase"
+    end     
 end
 
 def hallway_destiny
-    "You're in the hallway"
+    p "You're in the hallway and you see three spooky doors, one to the left, the middle, and the right. A ghost is beckoning you infront of the door to the left. Which do you choose?"
+    
+    hallway_selection = gets.chomp
+    hallway_function(hallway_selection)
+end
+
+def hallway_function(hallway_selection)
+    if hallway_selection.include? "left"
+        leftdoor_destiny
+    elsif hallway_selection.include? "middle"
+        middledoor_destiny
+    elsif hallway_selection.include? "right"
+        rightdoor_destiny
+    end
+end
+
+def leftdoor_destiny
+    p 'You chose the left door. You have fallen into a black hole and you have spawned in a utopian planet in another galaxy'
+end 
+
+def middledoor_destiny
+    enter_cellar
+end 
+
+def rightdoor_destiny
+    p "You chose the right door which opens to a set of stairs going to the second level. When you reach the top of the stairs, you are greeted by shrek's evil twin accompanied by his evil donkey. They ask you a riddle 'what's the most common language in coding' What do you answer?"
+
+    shrek_selection = gets.chomp
+    shrek_function(shrek_selection)
+end 
+
+def shrek_function(shrek_selection)
+    if shrek_selection.include? "profanity"
+        upstairs_destiny
+    else
+        p 'you got the answer wrong. GAME OVER'
+    end
+end
+
+def upstairs_destiny
+    p 'Good job, you got the right answer. You see a ladder, a bookcase, and a scary doll. Which do you interact with?'
+    
+    item_selection = gets.chomp
+    item_function(item_selection)
+end 
+
+def item_function(item_selection)
+    if item_selection.include? "ladder"
+        ladder_destiny
+    elsif item_selection.include? "bookcase"
+        bookcase_destiny
+    elsif item_selection.include? "doll"
+        doll_destiny
+    else
+        upstairs_destiny
+    end
+end
+
+def ladder_destiny
+    p 'You use the ladder to exit through the window and escape. Phew! The End'
+end 
+
+def bookcase_destiny
+    p 'You pull out a book and it triggers a secret passage.'
 end
 
 def enter_window
