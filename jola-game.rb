@@ -1,4 +1,39 @@
 
+puts <<-'EOF'
+.     .
+!!!!!!!
+.       [[[|]]]    .
+!!!!!!!!|--_--|!!!!!
+[[[[[[[[\_(X)_/]]]]]
+.-.     /-_--__-/_--_-\-_--\
+|=|    /-_---__/__-__-_\__-_\
+. . |=| ._/-__-__\===========/-__\_
+!!!!!!!!!\========[ /]]|[[\ ]=====/
+/-_--_-_-_[[[[[[[[[||==  == ||]]]]]]
+/-_--_--_--_|=  === ||=/^|^\ ||== =|
+/-_-/^|^\-_--| /^|^\=|| | | | ||^\= |
+/_-_-| | |-_--|=| | | ||=|_|_|=||"|==|
+/-__--|_|_|_-_-| |_|_|=||______=||_| =|
+/_-__--_-__-___-|_=__=_.`---------'._=_|__
+/-----------------------\===========/-----/
+^^^\^^^^^^^^^^^^^^^^^^^^^^[[|]]|[[|]]=====/
+|.' ..==::'"'::==.. '.[ /~~~~~\ ]]]]]]]
+| .'=[[[|]]|[[|]]]=`._||==  =  || =\ ]
+||== =|/ _____ \|== = ||=/^|^\=||^\ ||
+|| == `||-----||' = ==|| | | |=|| |=||
+||= == ||:^s^:|| = == ||=| | | || |=||
+|| = = ||:___:||= == =|| |_|_| ||_|=||
+_||_ = =||o---.|| = ==_||_= == =||==_||_
+\__/= = ||:   :||= == \__/[][][][][]\__/
+[||]= ==||:___:|| = = [||]\\//\\//\\[||]
+}  {---'"'-----'"'- --}  {//\\//\\//}  {
+__[==]__________________[==]\\//\\//\\[==]_
+|`|~~~~|================|~~~~|~~~~~~~~|~~~~||
+|^| ^  |================|^   | ^ ^^ ^ |  ^ ||
+\|//\\/^|/==============\|/^\\\^/^.\^///\\//|///
+\\///\\\//===============\\//\\///\\\\////\\\/////
+""'""'""".'..'. ' '. ''..'.""'""'""'""''"''"''""
+EOF
 
 puts 'Hello. Please enter your name to begin:'
 player = gets.chomp
@@ -7,13 +42,18 @@ puts "Hello, #{player}. Would you like to play a game?"
 game_question = gets.chomp.downcase
     
 def intro
-    p "It was a dark and stormy night. In front of you is an old, run-down house. You notice the front door is ajar. There's also an open window you can reach. On the side of the house is an old bulkhead leading to the cellar.
-    
-    How would you like to enter the house?"
+p "It was a dark and stormy night. In front of you is an old, run-down house. You notice the front door is ajar. There's also an open window you can reach. On the side of the house is an old bulkhead leading to the cellar." 
+
+p "How would you like to enter the house?"
 
     enter_house_answer = gets.chomp.downcase
     enter_house(enter_house_answer)
 end
+
+# def ascii_art 
+#     File.read("./ascii.txt")
+# end 
+
 
 def game_start (game_question)
     if game_question == 'yes' or game_question == 'y'
@@ -121,8 +161,29 @@ def ladder_destiny
 end 
 
 def bookcase_destiny
-    p 'You pull out a book and it triggers a secret passage.'
+    p 'There are a lot of interesting books here. What is your favorite book?'
+    favorite_book = gets.chomp 
+    p "You see a copy of #{favorite_book}. You take it off the shelf. Do you want to read it?" 
+    want_to_read = gets.chomp
+    if want_to_read.include? "yes"
+        p "Enjoy your book!"
+    else 
+        upstairs_destiny
+    end      
 end
+
+def doll_destiny
+        p "You pick up the doll. You happen to be a doll afficianado and know that this doll is worth millions, but they have been known to curse anyone who makes money off of them. What are you going to do? Will you put it back or sell it?"
+    doll_decision = gets.chomp
+    if doll_decision.include? "sell"
+        p "You've been unwise and greedy. Your fate has been sealed. Now you are cursed!!"   
+    elsif doll_decision.include? "back"
+        upstairs_destiny
+    else 
+        p "Please choose between selling it and putting it back." 
+        doll_destiny 
+    end     
+end    
 
 def enter_window
     p "Entered window. Why didn't you use the door??? it was open..."
